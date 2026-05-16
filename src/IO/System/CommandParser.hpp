@@ -3,8 +3,11 @@
 #include "details/CommandParserVisitor.hpp"
 
 #include <functional>
+#include <stdexcept>
 #include <sstream>
 #include <string>
+#include <unordered_map>
+#include <utility>
 
 namespace sw::io
 {

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <stdexcept>
+#include <string>
 
 namespace sw
 {
@@ -15,9 +17,12 @@ namespace sw
 		{}
 
 		template <class TField>
-		void visit(const char*, TField& field)
+		void visit(const char* name, TField& field)
 		{
-			_stream >> field;
+			if (!(_stream >> field))
+			{
+				throw std::runtime_error("Failed to parse command field: " + std::string(name));
+			}
 		}
 	};
 }

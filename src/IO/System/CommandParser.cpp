@@ -28,6 +28,11 @@ namespace sw::io
 			}
 
 			command->second(commandStream);
+			commandStream >> std::ws;
+			if (!commandStream.eof())
+			{
+				throw std::runtime_error("Unexpected extra arguments for command: " + commandName);
+			}
 		}
 	}
 }
